@@ -267,6 +267,9 @@ void Map::input()
 // Checks if player has won the game
 void Map::checkForCollision()
 {
+	// Lock the mutex to ensure thread safety
+	std::lock_guard<std::mutex> guard(mtx);
+
 	// Get head coordinates
 	int headX, headY;
 	snake->getCoordinates(headX, headY);
